@@ -12,5 +12,9 @@ public enum QuizServiceType {
     //=> For Quiz:
     GET_QUIZ,
     SUBMIT_QUIZ,
-    CREATE_QUIZ
+    CREATE_QUIZ,
+
+    // => Auth User:
+    REGISTER_USER,
+    LOGIN_USER
 }

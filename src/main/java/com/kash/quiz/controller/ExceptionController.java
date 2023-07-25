@@ -1,8 +1,13 @@
 package com.kash.quiz.controller;
 
 
+import com.kash.quiz.exception.JwtException;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.payload.Response;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
+import jakarta.servlet.ServletException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,6 +36,21 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 @Slf4j
 public class ExceptionController extends ResponseEntityExceptionHandler implements RequestBodyAdvice {
+
+    // Method to handle authentication-related exceptions
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<Object> handleAuthenticationException( AuthenticationException authException) {
+        log.info("===: ExceptionController:: Inside handleAuthenticationException Method :===");
+
+        return ResponseEntity.ok().body(getResponse("Authentication failed: " + authException.getMessage(), "QAPP_401"));
+    }
+
+    @ExceptionHandler(value = JwtException.class)
+    public ResponseEntity<Object> handleJwtException(JwtException ex) {
+        log.info("===: ExceptionController:: Inside handleJwtException Method :===");
+        String errorMessage = ex.getMessage();
+        return new ResponseEntity<>(errorMessage, HttpStatus.UNAUTHORIZED);
+    }
 
 
     /*----Handle The Custom HttpMessageNotReadable Exception----*/
@@ -64,16 +86,54 @@ public class ExceptionController extends ResponseEntityExceptionHandler implemen
 
         log.info("===: ExceptionController:: Inside handleDataIntegrityViolationException Method :===");
         String message = ex.getMessage();
-        return new ResponseEntity<>(getResponse(message, "QPICKER_500"), HttpStatus.CONFLICT);
+        return new ResponseEntity<>(getResponse(message, "QAPP_500"), HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(value = AccessDeniedException.class)
+    public ResponseEntity<Object> handleAccessDenied(AccessDeniedException ex){
+        log.info("===: ExceptionController:: Inside handleAccessDenied Method :===");
+        String message = ex.getMessage();
+        return new ResponseEntity<>(getResponse(message + "!!! You Are Not Allowed To Access This API", "QAPP_403"), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(value = ServletException.class)
+    public ResponseEntity<Object> handleServletException(ServletException ex){
+        log.info("===: ExceptionController:: Inside handleServletException Method :===");
+        String message = ex.getMessage();
+        return new ResponseEntity<>(getResponse(message, "QAPP_500"), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(value = SignatureException.class)
+    public ResponseEntity<Object> handleSignatureException(ServletException ex){
+        log.info("===: ExceptionController:: Inside handleSignatureException Method :===");
+        String message = ex.getMessage();
+        return new ResponseEntity<>(getResponse(message, "QAPP_401"), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<String> handleExpiredJwtException(ExpiredJwtException ex) {
+        log.info("===: ExceptionController:: Inside handleExpiredJwtException Method :===");
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(MalformedJwtException.class)
+    public ResponseEntity<String> handleMalformedJwtException(MalformedJwtException ex) {
+        log.info("===: ExceptionController:: Inside handleMalformedJwtException Method :===");
+        String errorMessage = ex.getMessage();
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
+
+
+
 
     /*----Handle The Custom RuntimeException Exception.----*/
     @ExceptionHandler(value = RuntimeException.class)
     public ResponseEntity<Object> runtimeException (RuntimeException ex) {
 
         log.info("===: ExceptionController:: Inside runtimeException Method :===");
+
         String message = ex.getMessage();
-        return new ResponseEntity<>(getResponse(message, "QPICKER_500"), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(getResponse(message, "QAPP_500"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /*----Handle The Custom QPickerException Exception.----*/
@@ -81,7 +141,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler implemen
     public ResponseEntity<Object> generalException (QuizException gExcp) {
         log.info("===: ExceptionController:: Inside generalException Method :===");
         String message = gExcp.getMessage();
-        return new ResponseEntity<>(getResponse(message, "QPICKER_400"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(getResponse(message, "QAPP_400"), HttpStatus.BAD_REQUEST);
     }
 
 
@@ -145,4 +205,5 @@ public class ExceptionController extends ResponseEntityExceptionHandler implemen
         response.setResponseType("E");
         return response;
     }
+
 }

@@ -10,7 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -23,6 +31,7 @@ public class QuestionController {
 
 
     @GetMapping("/allQuestions")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Response> getAllQuestion() throws QuizException {
         log.info("===: QuestionController:: Inside getAllQuestion Method :===");
         QuizService service = factory.getService(QuizServiceType.GET_ALL_QUESTION);
@@ -31,6 +40,7 @@ public class QuestionController {
     }
 
     @GetMapping("/allQuestions/{category}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Response> getAllQuestionByCategory(@PathVariable("category") String category) throws QuizException {
         log.info("===: QuestionController:: Inside getAllQuestionByCategory Method :===");
         QuizService service = factory.getService(QuizServiceType.GET_ALL_QUESTION_BY_CATEGORY);
@@ -39,6 +49,7 @@ public class QuestionController {
     }
 
     @PostMapping("/addQuestion")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Response> addQuestion(@RequestBody QuestionDTO questionDTO) throws QuizException {
         log.info("===: QuestionController:: Inside addQuestion Method :===");
         QuizService service = factory.getService(QuizServiceType.ADD_QUESTION);
@@ -47,6 +58,7 @@ public class QuestionController {
     }
 
     @DeleteMapping("/deleteQuestion/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Response> deleteQuestion(@PathVariable("id") Integer questionId) throws QuizException {
         log.info("===: QuestionController:: Inside deleteQuestion Method :===");
         QuizService service = factory.getService(QuizServiceType.DELETE_QUESTION);
@@ -55,6 +67,7 @@ public class QuestionController {
     }
 
     @PutMapping("/updateQuestion")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Response> updateQuestion(@RequestBody QuestionDTO questionDTO) throws QuizException {
         log.info("===: QuestionController:: Inside updateQuestion Method :===");
         QuizService service = factory.getService(QuizServiceType.UPDATE_QUESTION);

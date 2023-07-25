@@ -8,7 +8,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class QuizException extends Exception{
+public class QuizException extends RuntimeException{
 
     public QuizException (String message) {
         super(message);
