@@ -21,6 +21,6 @@ public class Response {
     @JsonProperty("response_message")
     private String responseMessage = QuizConstant.RESPONSE_MESSAGE;
     @JsonProperty("response_type")
-    private String responseType = QuizConstant.RESPONSE_TYPE;
+    private String responseType;
 
 }

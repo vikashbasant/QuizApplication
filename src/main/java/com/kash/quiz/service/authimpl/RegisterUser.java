@@ -7,9 +7,9 @@ import com.kash.quiz.repo.UserRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Role;
 import com.kash.quiz.model.User;
-import com.kash.quiz.dto.RegisterRequest;
+import com.kash.quiz.dto.registoruserdto.RegisterRequestDTO;
 import com.kash.quiz.dto.Response;
-import com.kash.quiz.dto.UserResponseDTO;
+import com.kash.quiz.dto.registoruserdto.UserResponseDTO;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +50,7 @@ public class RegisterUser implements QuizService {
     public <T> Response executeService(T t) throws QuizException {
 
         log.info("=>> RegisterUser:: Inside executeService Method<<=");
-        RegisterRequest userInfo = (RegisterRequest) t;
+        RegisterRequestDTO userInfo = (RegisterRequestDTO) t;
 
         //=>> Convert userDTO To user:
         User user = mMapper.map(userInfo, User.class);

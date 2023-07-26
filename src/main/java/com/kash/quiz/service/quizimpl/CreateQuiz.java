@@ -6,7 +6,7 @@ import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
-import com.kash.quiz.dto.CreateQuizDTO;
+import com.kash.quiz.dto.quizdto.CreateQuizDTO;
 import com.kash.quiz.dto.Response;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;

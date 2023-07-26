@@ -16,5 +16,9 @@ public enum QuizServiceType {
 
     // => Auth User:
     REGISTER_USER,
+    UPDATE_USER,
+    DELETE_USER,
+    GET_ALL_USER,
+    GET_USER,
     LOGIN_USER
 }

@@ -1,4 +1,4 @@
-package com.kash.quiz.dto;
+package com.kash.quiz.dto.registoruserdto;
 
 
 
@@ -22,7 +22,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Builder
-public class RegisterRequest {
+public class RegisterRequestDTO {
     private int userId;
 
     @NotNull(message = "Name can't be Null")

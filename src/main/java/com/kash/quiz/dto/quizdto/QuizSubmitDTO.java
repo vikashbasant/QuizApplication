@@ -1,4 +1,4 @@
-package com.kash.quiz.dto;
+package com.kash.quiz.dto.quizdto;
 
 import lombok.Data;
 

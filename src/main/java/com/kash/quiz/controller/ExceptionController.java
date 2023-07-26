@@ -21,6 +21,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -46,6 +47,14 @@ public class ExceptionController extends ResponseEntityExceptionHandler implemen
         log.info("===: ExceptionController:: Inside handleAuthenticationException Method :===");
         return ResponseEntity.ok().body(getResponse("Authentication failed: " + authException.getMessage(), "QAPP_401"));
 
+    }
+
+    // => Handle The Custom SignatureException Exception:
+    @ExceptionHandler(value = UsernameNotFoundException.class)
+    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex) {
+        log.info("===: ExceptionController:: Inside handleUsernameNotFoundException Method :===");
+        String message = ex.getMessage();
+        return new ResponseEntity<>(getResponse(message, "QAPP_401"), HttpStatus.UNAUTHORIZED);
     }
 
     // => Method to handle JwtException-related exceptions:
@@ -122,6 +131,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler implemen
         return new ResponseEntity<>(getResponse(message, "QAPP_500"), HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+
 
     // => Handle The Custom SignatureException Exception:
     @ExceptionHandler(value = SignatureException.class)

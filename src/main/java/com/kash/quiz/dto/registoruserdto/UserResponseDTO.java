@@ -1,10 +1,11 @@
-package com.kash.quiz.dto;
+package com.kash.quiz.dto.registoruserdto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kash.quiz.dto.roledto.RoleDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Component
 public class UserResponseDTO {
     private int userId;
