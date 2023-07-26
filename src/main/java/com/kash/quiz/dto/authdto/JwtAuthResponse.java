@@ -1,7 +1,7 @@
-package com.kash.quiz.payload.auth;
+package com.kash.quiz.dto.authdto;
 
 
-import com.kash.quiz.payload.Response;
+import com.kash.quiz.dto.Response;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

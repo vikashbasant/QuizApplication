@@ -1,9 +1,9 @@
-package com.kash.quiz.payload;
+package com.kash.quiz.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kash.quiz.payload.roledto.RoleDTO;
+import com.kash.quiz.dto.roledto.RoleDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

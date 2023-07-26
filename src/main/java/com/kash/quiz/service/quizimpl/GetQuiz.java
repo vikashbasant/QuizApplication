@@ -5,10 +5,11 @@ import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
-import com.kash.quiz.payload.QuestionWrapper;
-import com.kash.quiz.payload.Response;
+import com.kash.quiz.dto.questiondto.QuestionWrapper;
+import com.kash.quiz.dto.Response;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +19,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class GetQuiz implements QuizService {
 
     @Autowired
-    private Response response;
+    private final Response response;
 
     @Autowired
-    private QuizRepo quizDAO;
+    private final QuizRepo quizDAO;
 
     @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public QuizServiceType getServiceType () {

@@ -2,9 +2,9 @@ package com.kash.quiz.service.authimpl;
 
 import com.kash.quiz.constant.QuizConstant;
 import com.kash.quiz.exception.QuizException;
-import com.kash.quiz.payload.Response;
-import com.kash.quiz.payload.auth.JwtAuthRequest;
-import com.kash.quiz.payload.auth.JwtAuthResponse;
+import com.kash.quiz.dto.Response;
+import com.kash.quiz.dto.authdto.JwtAuthRequest;
+import com.kash.quiz.dto.authdto.JwtAuthResponse;
 import com.kash.quiz.security.JwtTokenHelper;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;

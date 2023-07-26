@@ -4,7 +4,7 @@ com.kash.quiz.controller
 com.kash.quiz.repo
 com.kash.quiz.exception
 com.kash.quiz.model
-com.kash.quiz.payload
+com.kash.quiz.dto
 com.kash.quiz.service.questionimpl
 com.kash.quiz.service.quizimpl
 com.kash.quiz.util

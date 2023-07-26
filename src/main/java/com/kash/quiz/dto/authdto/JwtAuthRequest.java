@@ -1,4 +1,4 @@
-package com.kash.quiz.payload.auth;
+package com.kash.quiz.dto.authdto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

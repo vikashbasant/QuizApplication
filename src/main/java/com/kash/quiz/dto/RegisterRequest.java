@@ -1,4 +1,4 @@
-package com.kash.quiz.payload;
+package com.kash.quiz.dto;
 
 
 

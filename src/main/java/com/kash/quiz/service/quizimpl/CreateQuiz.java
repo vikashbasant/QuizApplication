@@ -6,10 +6,11 @@ import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
-import com.kash.quiz.payload.CreateQuizDTO;
-import com.kash.quiz.payload.Response;
+import com.kash.quiz.dto.CreateQuizDTO;
+import com.kash.quiz.dto.Response;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,17 +18,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class CreateQuiz implements QuizService {
 
     @Autowired
-    private QuestionRepo qDAO;
+    private final QuestionRepo qDAO;
 
     @Autowired
-    private QuizRepo quizDAO;
+    private final QuizRepo quizDAO;
 
     @Autowired
-    private Response response;
+    private final Response response;
 
     @Override
     public QuizServiceType getServiceType () {
@@ -61,5 +63,6 @@ public class CreateQuiz implements QuizService {
         response.setData(saveQuiz);
 
         return response;
+
     }
 }

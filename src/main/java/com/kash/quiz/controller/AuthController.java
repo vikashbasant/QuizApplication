@@ -1,9 +1,9 @@
 package com.kash.quiz.controller;
 
 import com.kash.quiz.exception.QuizException;
-import com.kash.quiz.payload.RegisterRequest;
-import com.kash.quiz.payload.Response;
-import com.kash.quiz.payload.auth.JwtAuthRequest;
+import com.kash.quiz.dto.RegisterRequest;
+import com.kash.quiz.dto.Response;
+import com.kash.quiz.dto.authdto.JwtAuthRequest;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceFactory;
 import com.kash.quiz.util.QuizServiceType;

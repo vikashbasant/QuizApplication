@@ -107,16 +107,16 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.payload">Response</a>&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.dto">Response</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createQuiz(java.lang.String,java.lang.Integer,java.lang.String)" class="member-name-link">createQuiz</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;category,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;num,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.payload">Response</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.dto">Response</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getQuiz(java.lang.Integer)" class="member-name-link">getQuiz</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;quizID)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.payload">Response</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#submitAnswers(java.util.List,java.lang.Integer)" class="member-name-link">submitAnswers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../payload/QuizSubmitDTO.html" title="class in com.kash.quiz.payload">QuizSubmitDTO</a>&gt;&nbsp;quizSubmitDTO,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.dto">Response</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#submitAnswers(java.util.List,java.lang.Integer)" class="member-name-link">submitAnswers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../payload/QuizSubmitDTO.html" title="class in com.kash.quiz.dto">QuizSubmitDTO</a>&gt;&nbsp;quizSubmitDTO,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;quizID)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
@@ -154,7 +154,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createQuiz(java.lang.String,java.lang.Integer,java.lang.String)">
 <h3>createQuiz</h3>
 <div class="member-signature"><span class="annotations">@PostMapping("/create")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.payload">Response</a>&gt;</span>&nbsp;<span class="element-name">createQuiz</span><wbr><span class="parameters">(@RequestParam
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.dto">Response</a>&gt;</span>&nbsp;<span class="element-name">createQuiz</span><wbr><span class="parameters">(@RequestParam
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;category,
  @RequestParam
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;num,
@@ -171,7 +171,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getQuiz(java.lang.Integer)">
 <h3>getQuiz</h3>
 <div class="member-signature"><span class="annotations">@GetMapping("/getQuiz/{quizID}")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.payload">Response</a>&gt;</span>&nbsp;<span class="element-name">getQuiz</span><wbr><span class="parameters">(@PathVariable
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.dto">Response</a>&gt;</span>&nbsp;<span class="element-name">getQuiz</span><wbr><span class="parameters">(@PathVariable
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;quizID)</span>
                                                           throws <span class="exceptions"><a href="../exception/QuizException.html" title="class in com.kash.quiz.exception">QuizException</a></span></div>
 <dl class="notes">
@@ -184,8 +184,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="submitAnswers(java.util.List,java.lang.Integer)">
 <h3>submitAnswers</h3>
 <div class="member-signature"><span class="annotations">@PostMapping("/submit/{quizID}")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.payload">Response</a>&gt;</span>&nbsp;<span class="element-name">submitAnswers</span><wbr><span class="parameters">(@RequestBody
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../payload/QuizSubmitDTO.html" title="class in com.kash.quiz.payload">QuizSubmitDTO</a>&gt;&nbsp;quizSubmitDTO,
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;<a href="../payload/Response.html" title="class in com.kash.quiz.dto">Response</a>&gt;</span>&nbsp;<span class="element-name">submitAnswers</span><wbr><span class="parameters">(@RequestBody
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../payload/QuizSubmitDTO.html" title="class in com.kash.quiz.dto">QuizSubmitDTO</a>&gt;&nbsp;quizSubmitDTO,
  @PathVariable
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;quizID)</span>
                                                                 throws <span class="exceptions"><a href="../exception/QuizException.html" title="class in com.kash.quiz.exception">QuizException</a></span></div>

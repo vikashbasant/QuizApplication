@@ -1,4 +1,4 @@
-package com.kash.quiz.payload.roledto;
+package com.kash.quiz.dto.roledto;
 
 import lombok.Data;
 

@@ -5,10 +5,10 @@ import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
-import com.kash.quiz.payload.CorrectIncorrectOutput;
-import com.kash.quiz.payload.QuizSubmitDTO;
-import com.kash.quiz.payload.Response;
-import com.kash.quiz.payload.SubmitDTO;
+import com.kash.quiz.dto.questiondto.CorrectIncorrectOutput;
+import com.kash.quiz.dto.QuizSubmitDTO;
+import com.kash.quiz.dto.Response;
+import com.kash.quiz.dto.SubmitDTO;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
 import lombok.extern.slf4j.Slf4j;
@@ -89,5 +89,6 @@ public class QuizResult implements QuizService {
         response.setData(ciOutputs);
 
         return response;
+
     }
 }

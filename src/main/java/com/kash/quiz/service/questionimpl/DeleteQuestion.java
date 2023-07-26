@@ -4,22 +4,24 @@ import com.kash.quiz.constant.QuizConstant;
 import com.kash.quiz.repo.QuestionRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
-import com.kash.quiz.payload.Response;
+import com.kash.quiz.dto.Response;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class DeleteQuestion implements QuizService {
 
     @Autowired
-    private QuestionRepo qDAO;
+    private final QuestionRepo qDAO;
 
     @Autowired
-    private Response response;
+    private final Response response;
 
     @Override
     public QuizServiceType getServiceType () {

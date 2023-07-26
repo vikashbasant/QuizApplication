@@ -1,10 +1,10 @@
 package com.kash.quiz.controller;
 
 import com.kash.quiz.exception.QuizException;
-import com.kash.quiz.payload.CreateQuizDTO;
-import com.kash.quiz.payload.QuizSubmitDTO;
-import com.kash.quiz.payload.Response;
-import com.kash.quiz.payload.SubmitDTO;
+import com.kash.quiz.dto.CreateQuizDTO;
+import com.kash.quiz.dto.QuizSubmitDTO;
+import com.kash.quiz.dto.Response;
+import com.kash.quiz.dto.SubmitDTO;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceFactory;
 import com.kash.quiz.util.QuizServiceType;

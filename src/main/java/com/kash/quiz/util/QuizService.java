@@ -1,7 +1,7 @@
 package com.kash.quiz.util;
 
 import com.kash.quiz.exception.QuizException;
-import com.kash.quiz.payload.Response;
+import com.kash.quiz.dto.Response;
 
 public interface QuizService {
     QuizServiceType getServiceType ();
