@@ -3,9 +3,7 @@ package com.kash.quiz.constant;
 public class RoleConstants {
 
     /*----Adding private constructor to hide the implicit public one ----*/
-    private RoleConstants() {
-
-    }
+    private RoleConstants() {}
 
 
     public static final Integer ADMIN_USER = 501;

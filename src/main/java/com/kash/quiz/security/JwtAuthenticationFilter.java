@@ -86,8 +86,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 handleJwtException(response, HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT Token, Validation Fails!!");
                 return;
             }
-            filterChain.doFilter(request, response);
+
         }
+        filterChain.doFilter(request, response);
     }
 
     private void handleJwtException(HttpServletResponse response, int status, String errorMessage) throws IOException {

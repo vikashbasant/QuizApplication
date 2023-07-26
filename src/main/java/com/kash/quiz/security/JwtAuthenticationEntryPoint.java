@@ -18,7 +18,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException authException) throws IOException {
 
         log.info("===: JwtAuthenticationEntryPoint:: Inside commence Method :===");
-        httpServletResponse.sendError(javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED, "Access Denied!!!");
+        httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied!!!");
     }
 
 }

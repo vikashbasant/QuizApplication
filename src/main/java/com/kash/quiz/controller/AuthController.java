@@ -8,6 +8,7 @@ import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceFactory;
 import com.kash.quiz.util.QuizServiceType;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/auth")
 public class AuthController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
-    private QuizServiceFactory factory;
+    private final QuizServiceFactory factory;
 
     @PostMapping("/register")
     public ResponseEntity<Response> signUp(@RequestBody @Valid RegisterRequest userDTO) throws QuizException {

@@ -8,23 +8,22 @@ import com.kash.quiz.payload.QuestionDTO;
 import com.kash.quiz.payload.Response;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class AddQuestion implements QuizService {
 
-    @Autowired
-    private QuestionDAO qDAO;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final QuestionDAO qDAO;
 
-    @Autowired
-    private Response response;
+    private final ModelMapper modelMapper;
+
+    private final Response response;
 
     @Override
     public QuizServiceType getServiceType () {

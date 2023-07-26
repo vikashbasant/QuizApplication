@@ -3,9 +3,8 @@ package com.kash.quiz.constant;
 public class SecurityConfigConstants {
 
     /*----Adding private constructor to hide the implicit public one ----*/
-    private SecurityConfigConstants() {
+    private SecurityConfigConstants() {}
 
-    }
     public static final String[] PUBLIC_URL = {
             "/auth/**",
             "/v3/api-docs",

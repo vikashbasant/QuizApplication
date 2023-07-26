@@ -27,7 +27,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebSecurity
 @EnableWebMvc
-@EnableMethodSecurity
+@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 @RequiredArgsConstructor
 @Slf4j
 public class SecurityConfig {
@@ -48,7 +48,6 @@ public class SecurityConfig {
         log.info("===: SecurityConfig:: Inside filterChain Method:===");
 
         http.csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers(SecurityConfigConstants.PUBLIC_URL).permitAll()

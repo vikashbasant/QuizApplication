@@ -53,13 +53,13 @@ public class User implements UserDetails {
     @Column(name = "userAbout")
     private String userAbout;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "userId", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(name = "roleId", referencedColumnName = "roleId")
     )
-    private transient Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
 
     @Override
