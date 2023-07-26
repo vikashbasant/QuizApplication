@@ -1,7 +1,7 @@
 package com.kash.quiz.helper;
 
 import com.kash.quiz.constant.RoleConstants;
-import com.kash.quiz.dao.RoleRepo;
+import com.kash.quiz.repo.RoleRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Role;
 import lombok.RequiredArgsConstructor;

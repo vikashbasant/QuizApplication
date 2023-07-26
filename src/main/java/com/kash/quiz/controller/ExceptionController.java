@@ -69,7 +69,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler implemen
                 .stream()
                 .map(error -> error.getField() + " : " + error.getDefaultMessage())
                 .collect(Collectors.toList());
-        // returning 400 Bad Request in HTTP STATUS and all the invalid parameter details in body
+        // returning 400 Bad Request in HTTP SUCCESS_STATUS and all the invalid parameter details in body
         return ResponseEntity.ok().body(getResponse(String.valueOf(validationErrors), "400"));
     }
 

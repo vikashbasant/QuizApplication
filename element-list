@@ -1,7 +1,7 @@
 com.kash.quiz
 com.kash.quiz.constant
 com.kash.quiz.controller
-com.kash.quiz.dao
+com.kash.quiz.repo
 com.kash.quiz.exception
 com.kash.quiz.model
 com.kash.quiz.payload

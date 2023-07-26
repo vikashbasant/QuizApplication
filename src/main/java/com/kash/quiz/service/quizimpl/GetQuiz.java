@@ -1,7 +1,7 @@
 package com.kash.quiz.service.quizimpl;
 
 import com.kash.quiz.constant.QuizConstant;
-import com.kash.quiz.dao.QuizDAO;
+import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
@@ -25,7 +25,7 @@ public class GetQuiz implements QuizService {
     private Response response;
 
     @Autowired
-    private QuizDAO quizDAO;
+    private QuizRepo quizDAO;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -55,7 +55,7 @@ public class GetQuiz implements QuizService {
 
 
         /*----Simply Return The Response----*/
-        response.setStatus(QuizConstant.STATUS);
+        response.setStatus(QuizConstant.SUCCESS_STATUS);
         response.setStatusCode(QuizConstant.STATUS_CODE);
         response.setMessage("Fetch All Question using quizId: " + quizId);
         response.setData(listQuestionWrapper);

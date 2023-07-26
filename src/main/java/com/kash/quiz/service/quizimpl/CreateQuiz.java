@@ -1,8 +1,8 @@
 package com.kash.quiz.service.quizimpl;
 
 import com.kash.quiz.constant.QuizConstant;
-import com.kash.quiz.dao.QuestionDAO;
-import com.kash.quiz.dao.QuizDAO;
+import com.kash.quiz.repo.QuestionRepo;
+import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
@@ -21,10 +21,10 @@ import java.util.List;
 public class CreateQuiz implements QuizService {
 
     @Autowired
-    private QuestionDAO qDAO;
+    private QuestionRepo qDAO;
 
     @Autowired
-    private QuizDAO quizDAO;
+    private QuizRepo quizDAO;
 
     @Autowired
     private Response response;
@@ -55,7 +55,7 @@ public class CreateQuiz implements QuizService {
         Quiz saveQuiz = quizDAO.save(quiz);
 
         /*----Simply Return The Response----*/
-        response.setStatus(QuizConstant.STATUS);
+        response.setStatus(QuizConstant.SUCCESS_STATUS);
         response.setStatusCode(QuizConstant.STATUS_CODE);
         response.setMessage("Fetch Random " + quizDTO.getNoOfQuestion() +" Question Successfully!");
         response.setData(saveQuiz);

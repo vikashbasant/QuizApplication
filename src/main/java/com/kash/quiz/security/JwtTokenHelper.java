@@ -21,31 +21,25 @@ import java.util.function.Function;
 @Slf4j
 public class JwtTokenHelper {
 
+    /*----Retrieve UserName from jwt token:----*/
+    public String getUsernameFromToken(String token) {
 
-    private Key getSignIngKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(JwtSecurityConstants.SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyBytes);
+        log.info("===: JwtTokenHelper:: Inside getUsernameFromToken Method :===");
+        return getClaimFromToken(token, Claims::getSubject);
+
     }
 
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+
         log.info("===: JwtTokenHelper:: Inside getClaimFromToken Method :===");
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
+
     }
-
-    /*----Retrieve UserName from jwt token:----*/
-    public String getUsernameFromToken(String token) {
-        log.info("===: JwtTokenHelper:: Inside getUsernameFromToken Method :===");
-        return getClaimFromToken(token, Claims::getSubject);
-    }
-
-
-
-
-
 
     /*----For Retrieving any information from token, we will need the secret key:----*/
     private Claims getAllClaimsFromToken(String token) {
+
         log.info("===: JwtTokenHelper:: Inside getAllClaimsFromToken Method :===");
         return Jwts
                 .parserBuilder()
@@ -53,16 +47,24 @@ public class JwtTokenHelper {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+
     }
 
 
+    private Key getSignIngKey() {
 
+        byte[] keyBytes = Decoders.BASE64.decode(JwtSecurityConstants.SECRET_KEY);
+        return Keys.hmacShaKeyFor(keyBytes);
+
+    }
 
     /*----Generate token for user:----*/
     public String generateToken(UserDetails userDetails) {
+
         log.info("===: JwtTokenHelper:: Inside generateToken Method :===");
         Map<String, Object> claims = new HashMap<>();
         return doGenerateToken(claims, userDetails.getUsername());
+
     }
 
 
@@ -78,6 +80,7 @@ public class JwtTokenHelper {
             Map<String, Object> extraClaims,
             String subject
     ) {
+
         log.info("===: JwtTokenHelper:: Inside doGenerateToken Method :===");
         return Jwts
                 .builder()
@@ -87,31 +90,34 @@ public class JwtTokenHelper {
                 .setExpiration(new Date(System.currentTimeMillis() + JwtSecurityConstants.JWT_TOKEN_VALIDITY * 1000))
                 .signWith(getSignIngKey(),SignatureAlgorithm.HS512)
                 .compact();
+
     }
 
 
     /*----Validate Token:----*/
     public Boolean isValidToken(String token, UserDetails userDetails) {
+
         log.info("===: JwtTokenHelper:: Inside isValidToken Method :===");
         final String username = getUsernameFromToken(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+
     }
-
-
-
 
     /*----Check if the token has expired:----*/
     private Boolean isTokenExpired(String token) {
+
         log.info("===: JwtTokenHelper:: Inside isTokenExpired Method :===");
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
+
     }
 
     /*----Retrieve Expiration date from jwt token:----*/
     public Date getExpirationDateFromToken(String token) {
+
         log.info("===: JwtTokenHelper:: Inside getExpirationDateFromToken Method :===");
         return getClaimFromToken(token, Claims::getExpiration);
-    }
 
+    }
 
 }

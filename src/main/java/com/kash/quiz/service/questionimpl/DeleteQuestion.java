@@ -1,7 +1,7 @@
 package com.kash.quiz.service.questionimpl;
 
 import com.kash.quiz.constant.QuizConstant;
-import com.kash.quiz.dao.QuestionDAO;
+import com.kash.quiz.repo.QuestionRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.payload.Response;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class DeleteQuestion implements QuizService {
 
     @Autowired
-    private QuestionDAO qDAO;
+    private QuestionRepo qDAO;
 
     @Autowired
     private Response response;
@@ -45,7 +45,7 @@ public class DeleteQuestion implements QuizService {
 
 
         /*----Now Simply Return Response----*/
-        response.setStatus(QuizConstant.STATUS);
+        response.setStatus(QuizConstant.SUCCESS_STATUS);
         response.setStatusCode(QuizConstant.STATUS_CODE);
         response.setMessage("Successfully Delete The Question With QuestionId = " + questionId);
         response.setData(byQuestionId);

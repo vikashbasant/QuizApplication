@@ -2,6 +2,7 @@ package com.kash.quiz.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.kash.quiz.constant.QuizConstant;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +19,8 @@ public class Response {
     private transient Object errorMessage;
     private String successRule;
     @JsonProperty("response_message")
-    private String responseMessage = "Request Processed Successfully";
+    private String responseMessage = QuizConstant.RESPONSE_MESSAGE;
     @JsonProperty("response_type")
-    private String responseType;
+    private String responseType = QuizConstant.RESPONSE_TYPE;
 
 }

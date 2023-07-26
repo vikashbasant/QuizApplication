@@ -1,4 +1,4 @@
-package com.kash.quiz.dao;
+package com.kash.quiz.repo;
 
 import com.kash.quiz.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;

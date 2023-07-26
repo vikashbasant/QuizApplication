@@ -2,8 +2,8 @@ package com.kash.quiz.service.authimpl;
 
 import com.kash.quiz.constant.QuizConstant;
 import com.kash.quiz.constant.RoleConstants;
-import com.kash.quiz.dao.RoleRepo;
-import com.kash.quiz.dao.UserRepo;
+import com.kash.quiz.repo.RoleRepo;
+import com.kash.quiz.repo.UserRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Role;
 import com.kash.quiz.model.User;
@@ -84,7 +84,7 @@ public class RegisterUser implements QuizService {
 
 
         /*----Simply Return The Response----*/
-        response.setStatus(QuizConstant.STATUS);
+        response.setStatus(QuizConstant.SUCCESS_STATUS);
         response.setStatusCode(QuizConstant.STATUS_CODE);
         response.setMessage("Successfully User Register Into DB!");
         response.setData(registerUser);

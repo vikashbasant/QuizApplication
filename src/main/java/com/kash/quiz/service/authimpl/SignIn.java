@@ -57,7 +57,7 @@ public class SignIn implements QuizService {
 
         /*----Simply Return Response-----*/
         JwtAuthResponse response = new JwtAuthResponse();
-        response.setStatus(QuizConstant.STATUS);
+        response.setStatus(QuizConstant.SUCCESS_STATUS);
         response.setStatusCode(QuizConstant.STATUS_CODE);
         response.setMessage("Successfully generated Token.");
         response.setToken(token);

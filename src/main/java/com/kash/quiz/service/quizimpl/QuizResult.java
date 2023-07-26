@@ -1,7 +1,7 @@
 package com.kash.quiz.service.quizimpl;
 
 import com.kash.quiz.constant.QuizConstant;
-import com.kash.quiz.dao.QuizDAO;
+import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
@@ -22,11 +22,11 @@ import java.util.List;
 @Slf4j
 public class QuizResult implements QuizService {
 
-    private final QuizDAO quizDAO;
+    private final QuizRepo quizDAO;
     private final Response response;
 
     @Autowired
-    public QuizResult(QuizDAO quizDAO, Response response) {
+    public QuizResult(QuizRepo quizDAO, Response response) {
         this.quizDAO = quizDAO;
         this.response = response;
     }
@@ -83,7 +83,7 @@ public class QuizResult implements QuizService {
         }
 
         /*----Simply Return The Response----*/
-        response.setStatus(QuizConstant.STATUS);
+        response.setStatus(QuizConstant.SUCCESS_STATUS);
         response.setStatusCode(QuizConstant.STATUS_CODE);
         response.setMessage("You are getting: " + rightAns + " out of: " + ciOutputs.size());
         response.setData(ciOutputs);
