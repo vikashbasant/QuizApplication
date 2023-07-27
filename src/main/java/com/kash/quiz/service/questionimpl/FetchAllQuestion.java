@@ -1,10 +1,10 @@
 package com.kash.quiz.service.questionimpl;
 
 import com.kash.quiz.constant.QuizConstant;
-import com.kash.quiz.repo.QuestionRepo;
+import com.kash.quiz.dto.Response;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
-import com.kash.quiz.dto.Response;
+import com.kash.quiz.repo.QuestionRepo;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
 import lombok.RequiredArgsConstructor;

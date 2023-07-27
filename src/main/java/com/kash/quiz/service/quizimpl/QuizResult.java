@@ -1,14 +1,14 @@
 package com.kash.quiz.service.quizimpl;
 
 import com.kash.quiz.constant.QuizConstant;
-import com.kash.quiz.repo.QuizRepo;
+import com.kash.quiz.dto.Response;
+import com.kash.quiz.dto.questiondto.CorrectIncorrectOutput;
+import com.kash.quiz.dto.quizdto.QuizSubmitDTO;
+import com.kash.quiz.dto.quizdto.SubmitDTO;
 import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.model.Question;
 import com.kash.quiz.model.Quiz;
-import com.kash.quiz.dto.questiondto.CorrectIncorrectOutput;
-import com.kash.quiz.dto.quizdto.QuizSubmitDTO;
-import com.kash.quiz.dto.Response;
-import com.kash.quiz.dto.quizdto.SubmitDTO;
+import com.kash.quiz.repo.QuizRepo;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceType;
 import lombok.extern.slf4j.Slf4j;

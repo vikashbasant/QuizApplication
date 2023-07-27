@@ -8,6 +8,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 @Slf4j
@@ -18,7 +19,9 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException authException) throws IOException {
 
         log.info("===: JwtAuthenticationEntryPoint:: Inside commence Method :===");
-        httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied!!!");
+        httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        PrintWriter writer = httpServletResponse.getWriter();
+        writer.println("Access Denied!! " + authException.getMessage());
 
     }
 

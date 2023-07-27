@@ -1,12 +1,16 @@
 package com.kash.quiz.controller;
 
-import com.kash.quiz.exception.QuizException;
-import com.kash.quiz.dto.registoruserdto.RegisterRequestDTO;
 import com.kash.quiz.dto.Response;
 import com.kash.quiz.dto.authdto.JwtAuthRequest;
+import com.kash.quiz.dto.registoruserdto.RegisterRequestDTO;
+import com.kash.quiz.exception.QuizException;
 import com.kash.quiz.util.QuizService;
 import com.kash.quiz.util.QuizServiceFactory;
 import com.kash.quiz.util.QuizServiceType;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -42,6 +46,23 @@ public class AuthController {
      * @see RegisterRequestDTO
      * @see ResponseEntity
      */
+    @Operation(
+            summary = "Sign up a new user",
+            description = "This operation signs up a new user.",
+            responses = {
+                    @ApiResponse(responseCode="400", ref="badRequest"),
+                    @ApiResponse(responseCode="500", ref="internalServerError"),
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Successfully SingUp",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Response.class)
+                            )
+                    )
+
+            }
+    )
     @PostMapping("/register")
     public ResponseEntity<Response> signUp(@RequestBody @Valid RegisterRequestDTO userDTO) throws QuizException {
 
