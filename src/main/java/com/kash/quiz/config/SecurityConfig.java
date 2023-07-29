@@ -49,7 +49,6 @@ public class SecurityConfig {
         log.info("===: SecurityConfig:: Inside filterChain Method:===");
 
         http.csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers(SecurityConfigConstants.PUBLIC_URL).permitAll()
