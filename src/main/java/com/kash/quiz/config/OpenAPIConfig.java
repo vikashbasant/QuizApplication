@@ -42,7 +42,7 @@ import org.springframework.http.MediaType;
                 )
         },
         servers = {
-                @Server(url = "/", description = "Default Server URL")
+                @Server(url = "/quiz-app/v1", description = "Default Server URL")
         }
 
 )
