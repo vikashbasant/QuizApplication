@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.examples.Example;
@@ -39,6 +40,9 @@ import org.springframework.http.MediaType;
                         name = ApiInfoSwaggerConstants.SECURITY_REFERENCE,
                         scopes = ApiInfoSwaggerConstants.AUTHORIZATION_SCOPE
                 )
+        },
+        servers = {
+                @Server(url = "/", description = "Default Server URL")
         }
 
 )
@@ -54,7 +58,7 @@ import org.springframework.http.MediaType;
 public class OpenAPIConfig {
 
     @Bean
-    public OpenAPI baseOpenAPI(){
+    public OpenAPI baseOpenAPI() {
         ApiResponse badRequestAPI = new io.swagger.v3.oas.models.responses.ApiResponse().content(
                 new Content().addMediaType(MediaType.APPLICATION_JSON_VALUE,
                         new io.swagger.v3.oas.models.media.MediaType().addExamples("default",
@@ -68,7 +72,7 @@ public class OpenAPIConfig {
                                 new Example().value("{\"code\" : 500, \"status\": \"Internal Server Error!\", \"Message\": \"Internal Server Error!\" }")))
         ).description("Internal Server Error!!");
 
-        Components components =new Components();
+        Components components = new Components();
         components.addResponses("badRequest", badRequestAPI);
         components.addResponses("internalServerError", internalServerErrorAPI);
 
